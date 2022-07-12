@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="OK" xml:space="preserve">
+        <value>Ok</value>
+    </data>
+    <data name="Sunrise" xml:space="preserve">
+        <value>Sunrise:</value>
+    </data>
+    <data name="Sunset" xml:space="preserve">
+        <value>Sunset:</value>
+    </data>
+    <data name="Lat" xml:space="preserve">
+        <value>Enter Latitude</value>
+    </data>
+    <data name="Lng" xml:space="preserve">
+        <value>Enter Longitude</value>
+    </data>
+    <data name="DashboardTopText" xml:space="preserve">
+        <value>Enter the city name or geographic coordinates to get the information about sunset and sunrise.</value>
+    </data>
+    <data name="Daylight" xml:space="preserve">
+        <value>Daylight:</value>
+    </data>
+    <data name="GetInfoButtonText" xml:space="preserve">
+        <value>Get information</value>
+    </data>
+    <data name="CheckBoxText" xml:space="preserve">
+        <value>Use coordinates to get information</value>
+    </data>
+    <data name="EntryCityPlaceholder" xml:space="preserve">
+        <value>Enter city name</value>
+    </data>
+    <data name="GeneralError" xml:space="preserve">
+        <value>Sorry but something bad happens. Please try again</value>
+    </data>
+    <data name="NoInternet" xml:space="preserve">
+        <value>Please enable internet access and try again</value>
+    </data>
+    <data name="InvalidCity" xml:space="preserve">
+        <value>Invalid city name</value>
+    </data>
+    <data name="InvalidCoordinates" xml:space="preserve">
+        <value>Invalid coordinates</value>
+    </data>
+    <data name="CityNotFound" xml:space="preserve">
+        <value>City not found</value>
+    </data>
+</root>

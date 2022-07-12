@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    x:Class="SunriseApp.Resources.Styles"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SunriseApp.Converters;assembly=SunriseApp"
+    xmlns:controls="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:custom="clr-namespace:SunriseApp.Controls;assembly=SunriseApp">
+    
+    <Style
+        ApplyToDerivedTypes="True"
+        TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}"/>
+        <Setter Property="FontFamily" Value="Quicksand" />
+    </Style>
+    <Style
+        x:Key="CrossCheckBox"
+        TargetType="controls:CheckBox">
+        <Setter Property="Color" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />
+        <Setter Property="IconColor" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
+        <Setter Property="TextFontSize" Value="16" />
+        <Setter Property="FontFamily" Value="Quicksand" />
+    </Style>
+    <Style
+        ApplyToDerivedTypes="True"
+        TargetType="custom:CustomEntry">
+        <Setter Property="BackgroundColor" Value="{DynamicResource White}"/>
+    </Style>
+    <Style
+        ApplyToDerivedTypes="True"
+        TargetType="Button">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="{DynamicResource White}"/>
+        <Setter Property="FontFamily" Value="Quicksand" />
+    </Style>
+    
+    <converters:CheckBoxBackgroundColorConverter
+        x:Key="CheckBoxBackgroundColorConverter" />
+</ResourceDictionary>

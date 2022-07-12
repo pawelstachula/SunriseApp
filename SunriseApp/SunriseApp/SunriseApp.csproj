@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -10,6 +11,44 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+        <PackageReference Include="MvvmCross" Version="7.1.2" />
+        <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Refit" Version="6.3.2" />
+        <PackageReference Include="Refit.Newtonsoft.Json" Version="6.3.2" />
+        <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
+        <PackageReference Include="Xamarin.Forms.InputKit" Version="3.7.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Resources\AppResources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>AppResources.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Colors.xaml.cs">
+            <DependentUpon>DashboardPage.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Resources\Styles.xaml.cs">
+            <DependentUpon>Stylesc.xaml</DependentUpon>
+            <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="App.xaml.cs">
+          <DependentUpon>App.xaml</DependentUpon>
+          <SubType>Code</SubType>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Resources\Fonts\Quicksand-Regular.ttf" />
+        <EmbeddedResource Update="Resources\AppResources.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <None Remove="Resources\Fonts\Quicksand-Medium.ttf" />
+        <EmbeddedResource Include="Resources\Fonts\Quicksand-Medium.ttf" />
     </ItemGroup>
 </Project>

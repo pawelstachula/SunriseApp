@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<views:MvxContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pageModel="clr-namespace:SunriseApp.PageModels;assembly=SunriseApp"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:resources="clr-namespace:SunriseApp.Resources;assembly=SunriseApp"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:controls="clr-namespace:SunriseApp.Controls;assembly=SunriseApp"
+    x:DataType="pageModel:DashboardPageModel"
+    x:TypeArguments="pageModel:DashboardPageModel"
+    x:Class="SunriseApp.Pages.DashboardPage"
+    Background="{StaticResource BackgroundColor}">
+    <ContentView>
+        <Grid RowDefinitions="*,auto,*,40,auto,auto,*,auto,*,90"
+              RowSpacing="15"
+              Margin="15">
+            <Label Grid.Row="1"
+                   Text="{x:Static resources:AppResources.DashboardTopText}"
+                   HorizontalTextAlignment="Center" />
+            <controls:CustomEntry Grid.Row="3"
+                                  Keyboard="Text"
+                                  Text="{Binding City}"
+                                  Placeholder="{x:Static resources:AppResources.EntryCityPlaceholder}" />
+            <input:CheckBox Grid.Row="4"
+                            BoxBackgroundColor="{Binding Source={RelativeSource Self}, Path=IsChecked, Converter={StaticResource CheckBoxBackgroundColorConverter}}"
+                            BoxSizeRequest="23"
+                            CheckChangedCommand="{Binding CheckedChangedCommand}"
+                            IsChecked="{Binding IsCheckBoxCheck}"
+                            Style="{StaticResource CrossCheckBox}"
+                            Text="{x:Static resources:AppResources.CheckBoxText}"
+                            Type="Check" />
+            <Grid Grid.Row="5"
+                  RowSpacing="15"
+                  RowDefinitions="40,40"
+                  ColumnDefinitions="*,*">
+                <controls:CustomEntry Grid.Row="0"
+                                      Grid.Column="0"
+                                      Keyboard="Numeric"
+                                      Completed="LonEntryCompleted"
+                                      Text="{Binding Lat}"
+                                      Placeholder="{x:Static resources:AppResources.Lat}" />
+                <controls:CustomEntry Grid.Row="1"
+                                      Grid.Column="0"
+                                      x:Name="LngEntry"
+                                      Keyboard="Numeric"
+                                      Text="{Binding Lng}"
+                                      Placeholder="{x:Static resources:AppResources.Lng}" />
+            </Grid>
+            <Grid Grid.Row="7"
+                  RowDefinitions="auto,auto,auto"
+                  ColumnDefinitions="auto,10,auto">
+                <Label Grid.Row="0"
+                       Grid.Column="0"
+                       Text="{x:Static resources:AppResources.Sunrise}" />
+                <Label Grid.Row="1"
+                       Grid.Column="0"
+                       Text="{x:Static resources:AppResources.Sunset}" />
+                <Label Grid.Row="2"
+                       Grid.Column="0"
+                       Text="{x:Static resources:AppResources.Daylight}" />
+                <Label Grid.Row="0"
+                       Text="{Binding Model.Sunrise}"
+                       Grid.Column="2" />
+                <Label Grid.Row="1"
+                       Text="{Binding Model.Sunset}"
+                       Grid.Column="2" />
+                <Label Grid.Row="2"
+                       Text="{Binding Model.DayLength}"
+                       Grid.Column="2" />
+                <ActivityIndicator
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    IsVisible="{Binding FetchingData}"
+                    IsRunning="{Binding FetchingData}"
+                    Color="{StaticResource PrimaryColor}" />
+            </Grid>
+            <Button Grid.Row="9"
+                    Text="{x:Static resources:AppResources.GetInfoButtonText}"
+                    Margin="0,20"
+                    CornerRadius="8"
+                    Command="{Binding GetInfoCommand}">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup
+                        x:Name="CommonStates">
+                        <VisualState
+                            x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                                <Setter Property="TextColor" Value="{DynamicResource White}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState
+                            x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="{StaticResource DisableButtonColor}" />
+                                <Setter Property="TextColor" Value="{DynamicResource DisableButtonTextColor}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Button>
+        </Grid>
+    </ContentView>
+</views:MvxContentPage>

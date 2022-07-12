@@ -3,7 +3,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{15FCD53E-1F59-4B20-B895-39F137E545F3}</ProjectGuid>
+        <ProjectGuid>{F47F202F-D7C3-402A-A37D-49E0CE937712}</ProjectGuid>
         <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
         <OutputType>Library</OutputType>
         <RootNamespace>SunriseApp.Droid</RootNamespace>
@@ -14,9 +14,9 @@
         <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
         <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
         <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-        <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
         <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
         <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <DebugSymbols>true</DebugSymbols>
@@ -27,6 +27,8 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
         <AndroidLinkMode>None</AndroidLinkMode>
+        <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+        <AndroidHttpClientHandlerType>System.Net.Http.HttpClientHandler</AndroidHttpClientHandlerType>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <DebugSymbols>true</DebugSymbols>
@@ -39,36 +41,39 @@
         <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Mono.Android"/>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Xml.Linq"/>
-        <Reference Include="System.Xml"/>
+        <Reference Include="Mono.Android" />
+        <Reference Include="Mono.Android.Export" />
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012"/>
+        <PackageReference Include="MvvmCross" Version="7.1.2" />
+        <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
+        <PackageReference Include="Xamarin.Forms.InputKit" Version="3.7.2" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="MainActivity.cs"/>
-        <Compile Include="Resources\Resource.Designer.cs"/>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="MainActivity.cs" />
+        <Compile Include="Renderers\EntryRenderer.cs" />
+        <Compile Include="Resources\Resource.Designer.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="Resources\AboutResources.txt"/>
-        <None Include="Assets\AboutAssets.txt"/>
-        <None Include="Properties\AndroidManifest.xml"/>
+        <None Include="Resources\AboutResources.txt" />
+        <None Include="Assets\AboutAssets.txt" />
+        <None Include="Properties\AndroidManifest.xml" />
     </ItemGroup>
     <ItemGroup>
-        <AndroidResource Include="Resources\layout\Tabbar.axml"/>
-        <AndroidResource Include="Resources\layout\Toolbar.axml"/>
-        <AndroidResource Include="Resources\values\styles.xml"/>
-        <AndroidResource Include="Resources\values\colors.xml"/>
+        <AndroidResource Include="Resources\values\styles.xml" />
+        <AndroidResource Include="Resources\values\colors.xml" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\SunriseApp\SunriseApp.csproj">
-            <Project>{C16EF4C8-81CB-4608-B448-52E114025035}</Project>
+            <Project>{9D58C1CE-9512-41DF-9D7D-E0A51C9C9C9F}</Project>
             <Name>SunriseApp</Name>
         </ProjectReference>
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets"/>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

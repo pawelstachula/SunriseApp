@@ -1,33 +1,43 @@
 ﻿using System;
+using System.Threading.Tasks;
+using MvvmCross;
+using SunriseApp.Exceptions;
+using SunriseApp.Services.Interfaces;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+namespace SunriseApp;
 
-namespace SunriseApp
+public partial class App : Application
 {
-    public partial class App : Application
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
+        InitializeComponent();
+    }
 
-            MainPage = new MainPage();
-        }
+    protected override void OnStart()
+    {
+        AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+        TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+    }
 
-        protected override void OnStart()
-        {
-            // Handle when your app starts
-        }
+    private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+    {
+        var newExc = new ApplicationUnhandledException(nameof(TaskSchedulerOnUnobservedTaskException), unobservedTaskExceptionEventArgs.Exception);
+        LogUnhandledException(newExc);
+    }
 
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
+    private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+    {
+        var newExc = new ApplicationUnhandledException(nameof(CurrentDomainOnUnhandledException), unhandledExceptionEventArgs.ExceptionObject as Exception);
+        LogUnhandledException(newExc);
+    }
 
-        protected override void OnResume()
+    private static void LogUnhandledException(ApplicationUnhandledException exception)
+    {
+        if (Mvx.IoCProvider.CanResolve<ILogger>())
         {
-            // Handle when your app resumes
+            var logger = Mvx.IoCProvider.Resolve<ILogger>();
+            logger.LogError(exception);
         }
     }
 }

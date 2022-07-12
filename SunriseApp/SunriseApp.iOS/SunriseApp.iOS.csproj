@@ -87,26 +87,28 @@
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="Main.cs"/>
-        <Compile Include="AppDelegate.cs"/>
-        <None Include="Entitlements.plist"/>
-        <None Include="Info.plist"/>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <None Include="Entitlements.plist" />
+        <None Include="Info.plist" />
+        <Compile Include="AppDelegate.cs" />
+        <Compile Include="Main.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-        <InterfaceDefinition Include="Resources\LaunchScreen.storyboard"/>
+        <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
             <Visible>false</Visible>
         </ImageAsset>
     </ItemGroup>
     <ItemGroup>
-        <Reference Include="System"/>
-        <Reference Include="System.Xml"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="Xamarin.iOS"/>
+        <Reference Include="System" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Core" />
+        <Reference Include="Xamarin.iOS" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012"/>
+        <PackageReference Include="MvvmCross" Version="7.1.2" />
+        <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\SunriseApp\SunriseApp.csproj">
@@ -114,5 +116,5 @@
             <Name>SunriseApp</Name>
         </ProjectReference>
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets"/>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
